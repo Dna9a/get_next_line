@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/23 21:55:37 by yoabied           #+#    #+#             */
-/*   Updated: 2025/11/23 21:57:57 by yoabied          ###   ########.fr       */
+/*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
+/*   Updated: 2025/11/23 21:58:01 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#include "get_next_line.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-
-# endif
-
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-char	*get_next_line(int fd);
-char	*ftitistrchr(const char *s, int c);
-char	*fttitistrjoin(char const *s1, char const *s2);
-size_t	ftitistrlen(const char *s);
-
-#endif
+char	*get_next_line(int fd)
+{
+    if((fd < 0) || (  ) || ())
+}
