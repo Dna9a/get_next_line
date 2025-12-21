@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/21 13:02:32 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/21 13:23:54 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,21 +101,24 @@ char	*stashsys(char *p)
 	free(p);
 	return (new_stash);
 }
-// char	*IneedDaline(char *delulu)
-// {
-// 	size_t	i;
-// 	char *new_n ;
+char	*IneedDaline(char *delulu)
+{
+	size_t	i;
+	char	*new_el;
+	size_t	j;
 
-// 	i = 0;
-// 	while (delulu[i] != '\n' || delulu[i] != '\0')
-// 	{
-// 		delulu[i++];
-// 		if(delulu[i] == '\n')
-// 		new_n = malloc()
-// 	}
-// 	new_n[i] = '\0';
-// 	return(new_n)
-// }
+	if (!delulu)
+		return (NULL);
+	i = 0; 
+	while (delulu[i] != '\n' && delulu[i] != '\0')
+	{
+		i++;
+		if(delulu[i] == '\n')
+		new_el = malloc(i + 1)
+	}
+	new_el[i] = '\0';
+	return(new_n)
+}
 
 char	*get_next_line(int fd)
 {
