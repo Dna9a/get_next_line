@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/20 21:08:42 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/21 13:02:32 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ char	*fttitistrjoin(char *s1, const char *s2)
 		return (NULL);
 	}
 	i = 0;
-	i = ft_mystcpy(r, s1);
-	i += ft_mystcpy(r + i, s2);
+	i = ft_strcpy(r, s1);
+	i += ft_strcpy(r + i, s2);
 	r[i] = '\0';
 	free(s1);
 	return (r);
@@ -101,32 +101,103 @@ char	*stashsys(char *p)
 	free(p);
 	return (new_stash);
 }
+// char	*IneedDaline(char *delulu)
+// {
+// 	size_t	i;
+// 	char *new_n ;
+
+// 	i = 0;
+// 	while (delulu[i] != '\n' || delulu[i] != '\0')
+// 	{
+// 		delulu[i++];
+// 		if(delulu[i] == '\n')
+// 		new_n = malloc()
+// 	}
+// 	new_n[i] = '\0';
+// 	return(new_n)
+// }
 
 char	*get_next_line(int fd)
 {
-	static char	*stash;
-	char		*buf_read;
 	int			byte_readed;
+	char		*buf_read;
+	static char	*stash;
 
+	buf_read = malloc(BUFFER_SIZE + 1);
+	if (!buf_read)
+		return (NULL);
 	byte_readed = 1;
 	while (byte_readed != 0)
 	{
 		byte_readed = read(fd, buf_read, BUFFER_SIZE);
+		if (byte_readed < 0) // Read error
+		{
+			free(buf_read);
+			return (NULL);
+		}
+		if (byte_readed == 0) // EOF reached
+			break ;
+		stash = fttitistrjoin(stash, buf_read);
+		if (ft_strchr(stash, '\n'))
+			break ;
+			
+		// TODO 4: Check if stash contains '\n' - if yes, break the loop!
 	}
+
+	buf_read[byte_readed] = '\0';
+	free(buf_read);
+
+
+
+	// TODO 5: Free buf_read (you're done reading)
+	// TODO 6: Extract the line from stash (hint: you need a new function)
+	// TODO 7: Update stash to keep leftover data after '\n' (use stashsys)
+	// TODO 8: Return the line
+	return ;
 }
 
-// IneedDanline(char *incdex)
-// {
-// 	size_t	i;
 
-// 	i = 0;
-// 	while (incdex[i] != '\n' || incdex[i] != '\0')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// char	*get_next_line(int fd)
+// {
+// 	int			byte_readed;
+// 	char		*buf_read;
+// 	static char	*stash;
+
+// 	byte_readed = 1;
+// 	while (byte_readed != 0)
 // 	{
-// 		incdex[i++];
+// 		byte_readed = read(fd, buf_read, BUFFER_SIZE);
 // 	}
 // }
-
-// loop search for new line or end of line
-// stop loop:
-// (check if the read function return 0
-// check if stash hold new line
