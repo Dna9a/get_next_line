@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/21 13:23:54 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/23 11:47:36 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
-size_t	c_lengh(const char *s)
+
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -62,7 +63,7 @@ char	*fttitistrjoin(char *s1, const char *s2)
 		if (!s1)
 			return (NULL);
 	}
-	r = (char *)malloc(ftitistrlen(s1) + ftitistrlen(s2) + 1);
+	r = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!r)
 	{
 		free(s1);
@@ -90,7 +91,7 @@ char	*stashsys(char *p)
 		free(p);
 		return (NULL);
 	}
-	new_stash = malloc(ftitistrlen(p) - i + 1);
+	new_stash = malloc(ft_strlen(p) - i + 1);
 	if (!new_stash) // wouach nrefreeyi or idk
 		return (NULL);
 	i++;
@@ -101,28 +102,40 @@ char	*stashsys(char *p)
 	free(p);
 	return (new_stash);
 }
-char	*IneedDaline(char *delulu)
+
+char	*ineeddaline(char *delulu)
 {
 	size_t	i;
-	char	*new_el;
 	size_t	j;
+	char	*new_el;
 
 	if (!delulu)
 		return (NULL);
-	i = 0; 
+	i = 0;
 	while (delulu[i] != '\n' && delulu[i] != '\0')
-	{
 		i++;
-		if(delulu[i] == '\n')
-		new_el = malloc(i + 1)
+	if (delulu[i] == '\n')
+		new_el = malloc(i + 2);
+	else
+		new_el = malloc(i + 1);
+	if (!new_el)
+		return (NULL);
+	j = 0;
+	while (j < i)
+	{
+		new_el[j] = delulu[j];
+		j++;
 	}
-	new_el[i] = '\0';
-	return(new_n)
+	if (delulu[i] == '\n')
+		new_el[j++] = '\n';
+	new_el[j] = '\0';
+	return (new_el);
 }
 
 char	*get_next_line(int fd)
 {
 	int			byte_readed;
+	char		*line;
 	char		*buf_read;
 	static char	*stash;
 
@@ -140,67 +153,15 @@ char	*get_next_line(int fd)
 		}
 		if (byte_readed == 0) // EOF reached
 			break ;
+		buf_read[byte_readed] = '\0';
 		stash = fttitistrjoin(stash, buf_read);
 		if (ft_strchr(stash, '\n'))
 			break ;
-			
-		// TODO 4: Check if stash contains '\n' - if yes, break the loop!
 	}
-
-	buf_read[byte_readed] = '\0';
 	free(buf_read);
-
-
-
-	// TODO 5: Free buf_read (you're done reading)
-	// TODO 6: Extract the line from stash (hint: you need a new function)
-	// TODO 7: Update stash to keep leftover data after '\n' (use stashsys)
-	// TODO 8: Return the line
-	return ;
+	if (!stash)
+		return (NULL);
+	line = ineeddaline(stash);
+	stash = stashsys(stash);
+	return (line);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// char	*get_next_line(int fd)
-// {
-// 	int			byte_readed;
-// 	char		*buf_read;
-// 	static char	*stash;
-
-// 	byte_readed = 1;
-// 	while (byte_readed != 0)
-// 	{
-// 		byte_readed = read(fd, buf_read, BUFFER_SIZE);
-// 	}
-// }
