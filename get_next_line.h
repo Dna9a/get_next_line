@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 21:55:37 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/20 21:07:26 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/25 09:23:29 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 # define GET_NEXT_LINE
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE
 # endif
 
 # include <fcntl.h>
-# include <stdio.h> // msa7haa ya jmiiii
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*ftstashsys(char *p);
-char	*get_next_line(int fd);
-char	*fttitistrjoin(char *s1, char const *s2);
 
-size_t	ftitistrlen(const char *s);
-// char	*ftitistrchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
+size_t	ft_strcpy(char *dst, const char *src);
+char	*ft_strchr(const char *s, int c);
+char	*fttitistrjoin(char *s1, const char *s2);
+char	*stashsys(char *p);
+char	*ineeddaline(char *delulu);
+char	*get_next_line(int fd);
 
 #endif
