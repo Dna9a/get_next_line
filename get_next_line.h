@@ -6,21 +6,20 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 21:55:37 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/25 09:23:29 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/26 21:23:36 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE
+#  define BUFFER_SIZE 45
 # endif
 
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strcpy(char *dst, const char *src);

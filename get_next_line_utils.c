@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:40:27 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/23 12:26:58 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/27 20:55:39 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
+
 size_t	ft_strcpy(char *dst, const char *src)
 {
 	size_t	i;
@@ -36,6 +37,7 @@ size_t	ft_strcpy(char *dst, const char *src)
 	}
 	return (i);
 }
+
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
@@ -48,8 +50,6 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
-
-
 
 char	*fttitistrjoin(char *s1, const char *s2)
 {
@@ -65,10 +65,7 @@ char	*fttitistrjoin(char *s1, const char *s2)
 	}
 	r = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!r)
-	{
-		free(s1);
 		return (NULL);
-	}
 	i = 0;
 	i = ft_strcpy(r, s1);
 	i += ft_strcpy(r + i, s2);

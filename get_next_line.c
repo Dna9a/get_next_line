@@ -6,12 +6,11 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/23 12:29:22 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/27 20:54:57 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 char	*get_next_line(int fd)
 {
