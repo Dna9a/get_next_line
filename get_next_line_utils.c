@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:40:27 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/27 20:55:39 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/30 20:16:57 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*fttitistrjoin(char *s1, const char *s2)
 	size_t	i;
 	char	*r;
 
-	// s2 uhmmm za3ma ? idk if its naicessary
+	i = 0;
 	if (!s1)
 	{
 		s1 = calloc(1, 1);
@@ -65,8 +65,10 @@ char	*fttitistrjoin(char *s1, const char *s2)
 	}
 	r = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!r)
+	{
+		free(s1);
 		return (NULL);
-	i = 0;
+	}
 	i = ft_strcpy(r, s1);
 	i += ft_strcpy(r + i, s2);
 	r[i] = '\0';

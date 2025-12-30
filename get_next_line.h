@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 21:55:37 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/26 21:23:36 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/29 21:51:18 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 45
+#  define BUFFER_SIZE 2
 # endif
 
 # include <fcntl.h>
