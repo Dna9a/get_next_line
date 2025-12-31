@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:40:27 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/30 20:16:57 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/31 01:14:33 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,35 @@ char	*fttitistrjoin(char *s1, const char *s2)
 	return (r);
 }
 
+char	*ineeddaline(char *delulu)
+{
+	size_t	i;
+	size_t	j;
+	char	*new_el;
+	
+	if (!delulu)
+		return (NULL);
+		i = 0;
+	while (delulu[i] != '\n' && delulu[i] != '\0')
+	i++;
+	if (delulu[i] == '\n')
+	new_el = malloc(i + 2);
+	else
+	new_el = malloc(i + 1);
+	if (!new_el)
+		return (NULL);
+	j = 0;
+	while (j < i)
+	{
+		new_el[j] = delulu[j];
+		j++;
+	}
+	if (delulu[i] == '\n')
+		new_el[j++] = '\n';
+	new_el[j] = '\0';
+	return (new_el);
+}
+
 char	*stashsys(char *p)
 {
 	size_t	i;
@@ -100,33 +129,4 @@ char	*stashsys(char *p)
 	new_stash[j] = '\0';
 	free(p);
 	return (new_stash);
-}
-
-char	*ineeddaline(char *delulu)
-{
-	size_t	i;
-	size_t	j;
-	char	*new_el;
-
-	if (!delulu)
-		return (NULL);
-	i = 0;
-	while (delulu[i] != '\n' && delulu[i] != '\0')
-		i++;
-	if (delulu[i] == '\n')
-		new_el = malloc(i + 2);
-	else
-		new_el = malloc(i + 1);
-	if (!new_el)
-		return (NULL);
-	j = 0;
-	while (j < i)
-	{
-		new_el[j] = delulu[j];
-		j++;
-	}
-	if (delulu[i] == '\n')
-		new_el[j++] = '\n';
-	new_el[j] = '\0';
-	return (new_el);
 }
