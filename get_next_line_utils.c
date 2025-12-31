@@ -6,11 +6,17 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:40:27 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/31 01:14:33 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/31 15:31:44 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	free_ptr(char **ptr)
+{
+	free(*ptr);
+	*ptr = NULL;
+}
 
 size_t	ft_strlen(const char *s)
 {
@@ -66,13 +72,13 @@ char	*fttitistrjoin(char *s1, const char *s2)
 	r = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!r)
 	{
-		free(s1);
+		free_ptr(&s1);
 		return (NULL);
 	}
 	i = ft_strcpy(r, s1);
 	i += ft_strcpy(r + i, s2);
 	r[i] = '\0';
-	free(s1);
+	free_ptr(&s1);
 	return (r);
 }
 
@@ -84,15 +90,18 @@ char	*ineeddaline(char *delulu)
 	
 	if (!delulu)
 		return (NULL);
-		i = 0;
+	i = 0;
 	while (delulu[i] != '\n' && delulu[i] != '\0')
-	i++;
+		i++;
 	if (delulu[i] == '\n')
-	new_el = malloc(i + 2);
+		new_el = malloc(i + 2);
 	else
-	new_el = malloc(i + 1);
+		new_el = malloc(i + 1);
 	if (!new_el)
+	{
+		free_ptr(&new_el);	
 		return (NULL);
+	}
 	j = 0;
 	while (j < i)
 	{
@@ -116,17 +125,20 @@ char	*stashsys(char *p)
 		i++;
 	if (!p[i])
 	{
-		free(p);
+		// free_ptr(&p);
 		return (NULL);
 	}
 	new_stash = malloc(ft_strlen(p) - i + 1);
-	if (!new_stash) // wouach nrefreeyi or idk
-		return (NULL);
+	if (!new_stash) 
+		{
+			free_ptr(&new_stash);
+			return (NULL);
+		}
 	i++;
 	j = 0;
 	while (p[i])
 		new_stash[j++] = p[i++];
 	new_stash[j] = '\0';
-	free(p);
+	free_ptr(&p);
 	return (new_stash);
 }

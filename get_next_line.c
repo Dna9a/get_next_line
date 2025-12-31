@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/30 20:12:51 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/31 14:28:37 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,14 @@ static char	*gnl_read(int fd, char *stash)
 	while (byte_readed != 0)
 	{
 		byte_readed = read(fd, buf_read, BUFFER_SIZE);
-		if (byte_readed < 0)
-			break ;
-		if (byte_readed == 0)
+		if (byte_readed <= 0)
 			break ;
 		buf_read[byte_readed] = '\0';
 		stash = fttitistrjoin(stash, buf_read);
 		if (ft_strchr(stash, '\n'))
 			break ;
 	}
-	free(buf_read);
+	free_ptr(&buf_read);
 	if (byte_readed < 0)
 		return (NULL);
 	return (stash);
