@@ -6,11 +6,12 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/31 14:28:37 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/31 22:50:34 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 static char	*gnl_read(int fd, char *stash)
 {
@@ -45,9 +46,16 @@ char	*get_next_line(int fd)
 
 	alr_read = gnl_read(fd, stash);
 	if (!alr_read)
-		return (NULL);
+		{
+			free_ptr(&alr_read);
+			return (NULL);
+		}
 	stash = alr_read;
 	line = ineeddaline(stash);
 	stash = stashsys(stash);
+	if (line == NULL)
+	{
+		free_ptr(&stash);
+	}
 	return (line);
 }

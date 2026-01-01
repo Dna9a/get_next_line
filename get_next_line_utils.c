@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:40:27 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/31 15:31:44 by yoabied          ###   ########.fr       */
+/*   Updated: 2025/12/31 22:46:40 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,21 +87,15 @@ char	*ineeddaline(char *delulu)
 	size_t	i;
 	size_t	j;
 	char	*new_el;
-	
+
 	if (!delulu)
 		return (NULL);
 	i = 0;
-	while (delulu[i] != '\n' && delulu[i] != '\0')
+	while (delulu[i] && delulu[i] != '\n')
 		i++;
-	if (delulu[i] == '\n')
-		new_el = malloc(i + 2);
-	else
-		new_el = malloc(i + 1);
+	new_el = malloc(i + (delulu[i] == '\n') + 1);
 	if (!new_el)
-	{
-		free_ptr(&new_el);	
 		return (NULL);
-	}
 	j = 0;
 	while (j < i)
 	{
@@ -123,17 +117,17 @@ char	*stashsys(char *p)
 	i = 0;
 	while (p[i] && p[i] != '\n')
 		i++;
-	if (!p[i])
+	if (!p[i] || p[i + 1] == '\0')
 	{
-		// free_ptr(&p);
+		free_ptr(&p);
 		return (NULL);
 	}
 	new_stash = malloc(ft_strlen(p) - i + 1);
-	if (!new_stash) 
-		{
-			free_ptr(&new_stash);
-			return (NULL);
-		}
+	if (!new_stash)
+	{
+		free_ptr(&p);
+		return (NULL);
+	}
 	i++;
 	j = 0;
 	while (p[i])
