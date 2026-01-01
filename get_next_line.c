@@ -28,6 +28,8 @@ static char	*gnl_read(int fd, char *stash)
 			break ;
 		buf_read[byte_readed] = '\0';
 		stash = fttitistrjoin(stash, buf_read);
+		if (stash == NULL || ft_strchr(stash, '\n'))
+			break ;
 		if (ft_strchr(stash, '\n'))
 			break ;
 	}
