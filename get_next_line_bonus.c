@@ -41,9 +41,9 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	char		*alr_read;
-	static char	*stash[1024];
+	static char	*stash[MAX_FD];
 
-	if (fd < 0 || fd >= 1024)
+	if (fd < 0 || fd >= MAX_FD)
 		return (NULL);
 	alr_read = gnl_read(fd, stash[fd]);
 	if (!alr_read)
