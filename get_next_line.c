@@ -6,7 +6,7 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/31 22:50:34 by yoabied          ###   ########.fr       */
+/*   Updated: 2026/01/01 15:58:47 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 static char	*gnl_read(int fd, char *stash)
 {
+
+
+		
 	int		byte_readed;
 	char	*buf_read;
 
