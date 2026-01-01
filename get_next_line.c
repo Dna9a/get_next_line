@@ -6,18 +6,14 @@
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2026/01/01 15:58:47 by yoabied          ###   ########.fr       */
+/*   Updated: 2026/01/01 16:17:55 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static char	*gnl_read(int fd, char *stash)
 {
-
-
-		
 	int		byte_readed;
 	char	*buf_read;
 
@@ -49,10 +45,10 @@ char	*get_next_line(int fd)
 
 	alr_read = gnl_read(fd, stash);
 	if (!alr_read)
-		{
-			free_ptr(&alr_read);
-			return (NULL);
-		}
+	{
+		free_ptr(&stash);
+		return (NULL);
+	}
 	stash = alr_read;
 	line = ineeddaline(stash);
 	stash = stashsys(stash);
