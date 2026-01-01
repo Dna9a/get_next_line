@@ -1,0 +1,22 @@
+# Object files
+*.o
+*.a
+
+# Test files
+test_*.c
+test_mandatory
+test_bonus
+test.txt
+test1.txt
+test2.txt
+*.out
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store

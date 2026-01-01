@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2026/01/01 16:17:55 by yoabied          ###   ########.fr       */
+/*   Created: 2026/01/01 16:21:00 by yoabied           #+#    #+#             */
+/*   Updated: 2026/01/01 16:21:00 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*gnl_read(int fd, char *stash)
 {
@@ -41,20 +41,22 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	char		*alr_read;
-	static char	*stash;
+	static char	*stash[1024];
 
-	alr_read = gnl_read(fd, stash);
+	if (fd < 0 || fd >= 1024)
+		return (NULL);
+	alr_read = gnl_read(fd, stash[fd]);
 	if (!alr_read)
 	{
-		free_ptr(&stash);
+		free_ptr(&stash[fd]);
 		return (NULL);
 	}
-	stash = alr_read;
-	line = ineeddaline(stash);
-	stash = stashsys(stash);
+	stash[fd] = alr_read;
+	line = ineeddaline(stash[fd]);
+	stash[fd] = stashsys(stash[fd]);
 	if (line == NULL)
 	{
-		free_ptr(&stash);
+		free_ptr(&stash[fd]);
 	}
 	return (line);
 }
