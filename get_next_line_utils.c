@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: younux <younux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:40:27 by yoabied           #+#    #+#             */
-/*   Updated: 2026/01/01 16:17:20 by yoabied          ###   ########.fr       */
+/*   Updated: 2026/01/02 00:30:58 by younux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,59 +80,4 @@ char	*fttitistrjoin(char *s1, const char *s2)
 	r[i] = '\0';
 	free_ptr(&s1);
 	return (r);
-}
-
-char	*ineeddaline(char *delulu)
-{
-	size_t	i;
-	size_t	j;
-	char	*new_el;
-
-	if (!delulu)
-		return (NULL);
-	i = 0;
-	while (delulu[i] && delulu[i] != '\n')
-		i++;
-	new_el = malloc(i + (delulu[i] == '\n') + 1);
-	if (!new_el)
-		return (NULL);
-	j = 0;
-	while (j < i)
-	{
-		new_el[j] = delulu[j];
-		j++;
-	}
-	if (delulu[i] == '\n')
-		new_el[j++] = '\n';
-	new_el[j] = '\0';
-	return (new_el);
-}
-
-char	*stashsys(char *p)
-{
-	size_t	i;
-	size_t	j;
-	char	*new_stash;
-
-	i = 0;
-	while (p[i] && p[i] != '\n')
-		i++;
-	if (!p[i] || p[i + 1] == '\0')
-	{
-		free_ptr(&p);
-		return (NULL);
-	}
-	new_stash = malloc(ft_strlen(p) - i + 1);
-	if (!new_stash)
-	{
-		free_ptr(&p);
-		return (NULL);
-	}
-	i++;
-	j = 0;
-	while (p[i])
-		new_stash[j++] = p[i++];
-	new_stash[j] = '\0';
-	free_ptr(&p);
-	return (new_stash);
 }

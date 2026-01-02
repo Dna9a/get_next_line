@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoabied <yoabied@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: younux <younux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 21:55:37 by yoabied           #+#    #+#             */
-/*   Updated: 2025/12/31 15:46:14 by yoabied          ###   ########.fr       */
+/*   Updated: 2026/01/02 01:45:56 by younux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ char	*fttitistrjoin(char *s1, const char *s2);
 char	*stashsys(char *p);
 char	*ineeddaline(char *delulu);
 char	*get_next_line(int fd);
+char	*gnl_read(int fd, char *stash);
+char	*cutof_gnl_read(char *stash);
 
 #endif
