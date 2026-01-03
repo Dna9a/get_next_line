@@ -72,14 +72,6 @@ clean:
 ```
  - - - - - - - - - - - - - - - - - -
 
-### what you need to know :pensive: 
-
-- Know the goal of the project
-- Know what's a static variable
-- The open commands
-- Know what's a fd
-- Leaks handling  
-
 <!-- Resources -->
 # Resources
 - **[Nikito](https://youtu.be/-Mt2FdJjVno?si=UizBGaoso6nZFQve)**
