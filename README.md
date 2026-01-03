@@ -1,12 +1,11 @@
 ## *This project has been created as part of the 42 curriculum by yoabied.* 
 <!-- 9sem -->
 <div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 45px;">:page_facing_up:</span>
-  <span style="font-size: 40px;">:dromedary_camel:</span>
+  <span style="font-size: 45px;">📄</span>
+  <span style="font-size: 40px;">🐪</span>
 </div>
-
-
 <!-- # Description-->
+
 # Description
 This project consists of implementing the get_next_line function, which reads a single line from a given file descriptor.
 The function must handle any valid file descriptor and return NULL if the descriptor is invalid or if an error occurs.
@@ -73,7 +72,7 @@ clean:
  - - - - - - - - - - - - - - - - - -
 
 <!-- Resources -->
-# Resources
+# Resources 
 - **[Nikito](https://youtu.be/-Mt2FdJjVno?si=UizBGaoso6nZFQve)**
 - **[Ayogun](https://medium.com/@ayogun/master-file-i-o-operations-with-42s-get-next-line-project-5fb001d1fff5)**
 - **[Lannur-s](https://medium.com/@lannur-s/gnl-c3cff1ee552b)**
@@ -114,4 +113,4 @@ While building my GNL, I took the approach of creating multiple helper functions
 2. **Extract**: `ineeddaline` isolates the first complete line from the stash
 3. **Update**: `stashsys` updates the stash to remove the extracted line
 4. **Return**: The extracted line is returned to the caller
-5. **Repeat**: On the next call, the process continues with the remaining stash content 
+5. **Repeat**: On the next call, the process continues with the remaining stash content 😔🐪
