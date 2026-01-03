@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoabied <yoabied@student.42.fr>            +#+  +:+       +#+        */
+/*   By: younux <younux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2026/01/02 16:02:21 by yoabied          ###   ########.fr       */
+/*   Updated: 2026/01/03 05:13:13 by younux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,18 @@ char	*gnl_read(int fd, char *stash)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stash[20240];
+	static char	*stash[FD_MAX];
 
-	stash[fd] = gnl_read(fd, stash[fd]);
-	if (!stash[fd])
-		return (NULL);
-	line = ineeddaline(stash[fd]);
-	stash[fd] = stashsys(stash[fd]);
-	if (line == NULL)
-		free_ptr(&stash[fd]);
-	return (line);
+	if (fd >= 0 && BUFFER_SIZE > 0 && fd < FD_MAX)
+	{
+		stash[fd] = gnl_read(fd, stash[fd]);
+		if (!stash[fd])
+			return (NULL);
+		line = ineeddaline(stash[fd]);
+		stash[fd] = stashsys(stash[fd]);
+		if (line == NULL)
+			free_ptr(&stash[fd]);
+		return (line);
+	}
+	return (NULL);
 }

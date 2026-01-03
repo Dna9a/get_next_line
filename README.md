@@ -8,13 +8,14 @@
 
 <!-- # Description-->
 # Description
-The goal and purpose of this project is to basically implement a function that reads from a file. This one is supposed to be a valid file descriptor; if not, my function is supposed to return null, otherwise it is supposed to return the line read.
+This project consists of implementing the get_next_line function, which reads a single line from a given file descriptor.
+The function must handle any valid file descriptor and return NULL if the descriptor is invalid or if an error occurs.
+On success, it returns the line read from the file descriptor, including the terminating newline character if it exists.
  - - - - - - - - - - - - - - - - - -
 ## Function Prototype
 
 ```c
 char *get_next_line(int fd);
-char *get_next_line_bonus(int fd);
 ```
 ### Parameters
 
@@ -112,9 +113,9 @@ While building my GNL, I took the approach of creating multiple helper functions
 - Returns the extracted line (including the newline character if present)
 
 ### 4. `stashsys` Function
-- Cleans up the stash after a line has been extracted
 - Keeps only the remaining data that comes after the extracted line
 - Allows GNL to continue reading from where it left off on the next call
+- Cleans up the stash after a line has been extracted if there is nothing left to extract
 
 ## Algorithm Flow
 1. **Read**: `gnl_read` accumulates data into the stash until a newline or EOF
