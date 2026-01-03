@@ -60,15 +60,15 @@ int	main(void)
 ```
 
 ## Makefile 
-During the process of testing my GNL, I made a small makefile tester so to test my function just with a make command, that's by throwing `ps -ef` output on another file called `smg`
+During the process of testing my GNL, I made a small makefile tester so to test my function just with a make command, that's by throwing `ps -ef` output on another file called `file.txt`
 
  - - - - - - - - - - - - - - - - - -
 
 ```Make
 run:
-    @ ps -f >> smg && cc -Wall -Wextra -Werror *.c -o gnl && ./gnl && rm -rf smg
+    @ ps -f >> file.txt && cc -Wall -Wextra -Werror *.c -o gnl && ./gnl && rm -rf file.txt
 clean:
-    @ rm -f gnl a.out smg
+    @ rm -f gnl a.out file.txt
 ```
  - - - - - - - - - - - - - - - - - -
 
