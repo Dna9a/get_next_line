@@ -1,57 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younux <younux@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoabied <yoabied@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 17:47:03 by yoabied           #+#    #+#             */
-/*   Updated: 2026/01/03 01:06:38 by younux           ###   ########.fr       */
+/*   Updated: 2026/01/02 16:02:21 by yoabied          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-char	*cutof_gnl_read(char *stash)
-{
-	char	*buf_read;
-
-	buf_read = malloc(BUFFER_SIZE + 1);
-	if (!buf_read)
-	{
-		free_ptr(&stash);
-		return (NULL);
-	}
-	return (buf_read);
-}
-
-char	*gnl_read(int fd, char *stash)
-{
-	int		byte_readed;
-	char	*buf_read;
-
-	buf_read = cutof_gnl_read(stash);
-	if (!buf_read)
-		return (NULL);
-	byte_readed = 1;
-	while (byte_readed != 0)
-	{
-		byte_readed = read(fd, buf_read, BUFFER_SIZE);
-		if (byte_readed <= 0)
-			break ;
-		buf_read[byte_readed] = '\0';
-		stash = fttitistrjoin(stash, buf_read);
-		if (stash == NULL || ft_strchr(stash, '\n'))
-			break ;
-	}
-	free_ptr(&buf_read);
-	if (byte_readed < 0)
-	{
-		free_ptr(&stash);
-		return (NULL);
-	}
-	return (stash);
-}
+#include "get_next_line_bonus.h"
 
 char	*ineeddaline(char *delulu)
 {
@@ -108,17 +67,58 @@ char	*stashsys(char *p)
 	return (new_stash);
 }
 
+char	*cutof_gnl_read(char *stash)
+{
+	char	*buf_read;
+
+	buf_read = malloc(BUFFER_SIZE + 1);
+	if (!buf_read)
+	{
+		free_ptr(&stash);
+		return (NULL);
+	}
+	return (buf_read);
+}
+
+char	*gnl_read(int fd, char *stash)
+{
+	int		byte_readed;
+	char	*buf_read;
+
+	buf_read = cutof_gnl_read(stash);
+	if (!buf_read)
+		return (NULL);
+	byte_readed = 1;
+	while (byte_readed != 0)
+	{
+		byte_readed = read(fd, buf_read, BUFFER_SIZE);
+		if (byte_readed <= 0)
+			break ;
+		buf_read[byte_readed] = '\0';
+		stash = fttitistrjoin(stash, buf_read);
+		if (stash == NULL || ft_strchr(stash, '\n'))
+			break ;
+	}
+	free_ptr(&buf_read);
+	if (byte_readed < 0)
+	{
+		free_ptr(&stash);
+		return (NULL);
+	}
+	return (stash);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stash;
+	static char	*stash[20240];
 
-	stash = gnl_read(fd, stash);
-	if (!stash)
+	stash[fd] = gnl_read(fd, stash[fd]);
+	if (!stash[fd])
 		return (NULL);
-	line = ineeddaline(stash);
-	stash = stashsys(stash);
+	line = ineeddaline(stash[fd]);
+	stash[fd] = stashsys(stash[fd]);
 	if (line == NULL)
-		free_ptr(&stash);
+		free_ptr(&stash[fd]);
 	return (line);
 }
